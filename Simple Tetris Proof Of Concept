@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace _____2015March16____MVCSATPROJECT.Csharp
+{
+  public partial class ExtendingTetrisPOC03 : System.Web.UI.Page
+  {
+    public static string[] arrayForBoard = new string[201];   
+
+    public static string[] arrayForTetromino = new string[5];
+
+/************************************/
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void BUTTON_Start_Click(object sender, EventArgs e)
+    {
+      TEXTBOX_Board.Text = "";
+
+     for(int i = 1; i < arrayForBoard.Length; i++)
+     {
+      arrayForBoard[i] = "[ ]";
+     }
+
+      for(int j = 1; j < 21; j++)
+      {
+        arrayForBoard[j * 10] = "[ ]\n";
+      }
+
+      for(int i = 1; i < arrayForTetromino.Length; i++)
+      {
+        arrayForTetromino[i] = "[o]";
+        arrayForBoard[i] = arrayForTetromino[i];
+      }
+
+      for(int i = 1; i < arrayForBoard.Length; i++)
+      {        
+       TEXTBOX_Board.Text += arrayForBoard[i];
+      }
+    }
+
+    protected void BUTTON_Down_Click(object sender, EventArgs e)
+    {
+       TEXTBOX_Board.Text="";
+
+       for(int i = 1; i < arrayForTetromino.Length; i++)
+       {
+       arrayForTetromino[i] = "[ ]";
+       arrayForBoard[i] = arrayForTetromino[i];
+       arrayForBoard[i + 10] = "[o]";
+       }
+
+       for(int i = 1; i < arrayForBoard.Length; i++)
+       {
+        TEXTBOX_Board.Text += arrayForBoard[i];
+       }
+    }
+  }
+}
+
+
+
